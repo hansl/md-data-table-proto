@@ -7,10 +7,18 @@
  **********************************************************************************************/
 /** Map relative paths to URLs. */
 const map: any = {
+  '@angular2-material/core': '/vendor/@angular2-material/core',
+  '@angular2-material/button': '/vendor/@angular2-material/button',
+  '@angular2-material/checkbox': '/vendor/@angular2-material/checkbox',
+  '@angular2-material/input': '/vendor/@angular2-material/input',
 };
 
 /** User packages configuration. */
 const packages: any = {
+  '@angular2-material/core': { main: 'core.js' },
+  '@angular2-material/button': { main: 'button' },
+  '@angular2-material/checkbox': { main: 'checkbox' },
+  '@angular2-material/input': { main: 'input' },
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -22,6 +30,7 @@ const barrels: string[] = [
   '@angular/core',
   '@angular/common',
   '@angular/compiler',
+  '@angular/forms',
   '@angular/http',
   '@angular/router',
   '@angular/platform-browser',
@@ -32,7 +41,13 @@ const barrels: string[] = [
 
   // App specific barrels.
   'app',
-  'app/shared',
+  'app/components/table',
+  'app/components/table/table-editable',
+  'app/components/table/table-for',
+  'app/components/table/table-global-selector',
+  'app/components/table/table-header',
+  'app/components/table/table-selector',
+  'app/demo-table',
   /** @cli-barrel */
 ];
 

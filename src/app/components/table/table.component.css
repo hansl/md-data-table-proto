@@ -1,0 +1,139 @@
+:host {
+  display: block;
+}
+
+:host[fullwidth] table {
+  width: 100%;
+}
+
+.spacer {
+  overflow: hidden;
+}
+
+
+table {
+  background: white;
+  border: 0;
+  border-spacing: 0;
+}
+
+table >>> > tbody tr {
+  position: relative;
+}
+
+table >>> > tbody > tr.is-selected {
+  background-color: #f5f5f5;
+}
+table >>> > tbody > tr > td,
+table >>> > thead > tr > th {
+  padding: 12px 18px;
+  vertical-align: middle;
+  text-align: left;
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  font-family: Roboto, Helvetica;
+}
+table >>> > tbody > tr > td:first-of-type,
+table >>> > thead > tr > th:first-of-type {
+  padding-left: 24px
+}
+table >>> > tbody > tr > td:last-of-type,
+table >>> > thead > tr > th:last-of-type {
+  padding-right: 24px
+}
+table >>> > tbody > tr > td,
+table >>> > tbody > tr > th {
+  position: relative;
+  vertical-align: middle;
+  height: 48px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  padding-top: 12px;
+  box-sizing: border-box;
+  color: rgba(0,0,0, 0.87);
+  font-size: 13px;
+  font-weight: 400;
+}
+table >>> > thead > tr > th {
+  position: relative;
+  vertical-align: bottom;
+  text-overflow: ellipsis;
+  font-size: 12px;
+  line-height: 24px;
+  letter-spacing: 0;
+  height: 48px;
+  color: rgba(0, 0, 0, 0.54);
+  padding-bottom: 8px;
+  box-sizing: border-box;
+  font-size: 12px;
+  font-weight: 500;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+/** styles for scrollable table **/
+.container {
+  position: relative;
+  display: inline-block;
+}
+
+.scroller {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  max-height: 400px;
+}
+
+.scroller table {
+  position: static;
+  table-layout: fixed;
+}
+
+.scroller table >>> > thead > tr > th {
+  height: 48px;
+  border-top: 1px solid rgba(0,0,0,0.12);
+  border-bottom: 1px solid rgba(0,0,0,0.12);
+  position: absolute;
+  background: white;
+  z-index: 1;
+}
+
+/**
+ * There is no way to define text-align on a col element
+ * so this hack is the best way to do it. numeric<n> means
+ * that the column with 0-index n will be aligned right.
+ *
+ * TODO(fringd): if there's a better way to do this find it.
+ */
+:host.numeric0 table >>> > tbody > tr > td:nth-child(1),
+:host.numeric1 table >>> > tbody > tr > td:nth-child(2),
+:host.numeric2 table >>> > tbody > tr > td:nth-child(3),
+:host.numeric3 table >>> > tbody > tr > td:nth-child(4),
+:host.numeric4 table >>> > tbody > tr > td:nth-child(5),
+:host.numeric5 table >>> > tbody > tr > td:nth-child(6),
+:host.numeric6 table >>> > tbody > tr > td:nth-child(7),
+:host.numeric7 table >>> > tbody > tr > td:nth-child(8),
+:host.numeric8 table >>> > tbody > tr > td:nth-child(9),
+:host.numeric9 table >>> > tbody > tr > td:nth-child(10),
+:host.numeric10 table >>> > tbody > tr > td:nth-child(11),
+:host.numeric11 table >>> > tbody > tr > td:nth-child(12),
+:host.numeric12 table >>> > tbody > tr > td:nth-child(13),
+:host.numeric13 table >>> > tbody > tr > td:nth-child(14),
+:host.numeric14 table >>> > tbody > tr > td:nth-child(15),
+:host.numeric15 table >>> > tbody > tr > td:nth-child(16),
+:host.numeric16 table >>> > tbody > tr > td:nth-child(17),
+:host.numeric17 table >>> > tbody > tr > td:nth-child(18),
+:host.numeric18 table >>> > tbody > tr > td:nth-child(19),
+:host.numeric19 table >>> > tbody > tr > td:nth-child(20),
+:host.numeric20 table >>> > tbody > tr > td:nth-child(21),
+:host.numeric21 table >>> > tbody > tr > td:nth-child(22),
+:host.numeric22 table >>> > tbody > tr > td:nth-child(23),
+:host.numeric23 table >>> > tbody > tr > td:nth-child(24),
+:host.numeric24 table >>> > tbody > tr > td:nth-child(25),
+:host.numeric25 table >>> > tbody > tr > td:nth-child(26),
+:host.numeric26 table >>> > tbody > tr > td:nth-child(27),
+:host.numeric27 table >>> > tbody > tr > td:nth-child(28),
+:host.numeric28 table >>> > tbody > tr > td:nth-child(29),
+:host.numeric29 table >>> > tbody > tr > td:nth-child(30),
+:host.numeric30 table >>> > tbody > tr > td:nth-child(31)
+{
+  text-align:right;
+}

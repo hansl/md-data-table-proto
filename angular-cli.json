@@ -23,7 +23,7 @@
     }
   },
   "defaults": {
-    "prefix": "app",
+    "prefix": "md",
     "sourceDir": "src",
     "styleExt": "css",
     "prefixInterfaces": false,

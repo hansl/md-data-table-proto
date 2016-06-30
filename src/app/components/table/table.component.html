@@ -1,0 +1,12 @@
+<div [class.container]="scrollable">
+  <div [class.scroller]="scrollable">
+    <div class="spacer">
+      <table>
+        <colgroup *ngIf="scrollable || hasWidths">
+          <col *ngFor="let width of columnWidths" [style.width.px]="width">
+        </colgroup>
+        <ng-content></ng-content>
+      </table>
+    </div>
+  </div>
+</div>

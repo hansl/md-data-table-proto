@@ -1,0 +1,174 @@
+<div class="demo-section">
+  <h3>Table</h3>
+
+  <h4>Local Sort and Infinite Scroll</h4>
+  <code ngNonBindable>
+    &lt;md-button (click)=&quot;add1000()&quot;&gt;add 1000 rows&lt;/md-button&gt;&lt;br/&gt;
+    &lt;md-table scrollable=&quot;true&quot;&gt;
+    &lt;thead&gt;
+    &lt;tr&gt;
+    &lt;th width=150 sort=&quot;name&quot;&gt;Name&lt;/th&gt;
+    &lt;th numeric width=90 sort=&quot;id&quot;&gt;ID&lt;/th&gt;
+    &lt;th width=200 sort=&quot;power&quot;&gt;Power&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+    &lt;tr *for=&quot;let item of items&quot;&gt;
+    &lt;td&gt;{{item.name}}&lt;/td&gt;
+    &lt;td&gt;{{item.id}}&lt;/td&gt;
+    &lt;td&gt;{{item.power}}&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;/tbody&gt;
+    &lt;/md-table&gt;
+  </code>
+  <md-button (click)="add1000()">add 1000 rows</md-button><br/>
+  <md-table scrollable="true">
+    <thead>
+    <tr>
+      <th width=150 sort="name">Name</th>
+      <th numeric width=90 sort="id">ID</th>
+      <th width=200 sort="power">Power</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *for="let item of items">
+      <td>{{item.name}}</td>
+      <td>{{item.id}}</td>
+      <td>{{item.power}}</td>
+    </tr>
+    </tbody>
+  </md-table>
+
+  <h4>Server side Sort</h4>
+  <code ngNonBindable>
+    &lt;md-table server-side-sort=&quot;true&quot; (sort)=updateData($event)&gt;
+    &lt;thead&gt;
+    &lt;tr&gt;
+    &lt;th sort=name&gt;Name&lt;/th&gt;
+    &lt;th numeric sort=id&gt;ID&lt;/th&gt;
+    &lt;th sort=power&gt;Power&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+    &lt;tr *for=&quot;let item of serverItems&quot;&gt;
+    &lt;td&gt;{{item.name}}&lt;/td&gt;
+    &lt;td&gt;{{item.id}}&lt;/td&gt;
+    &lt;td&gt;{{item.power}}&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;/tbody&gt;
+    &lt;/md-table&gt;
+  </code>
+  <p>$event will be a tuple of [sortField:string, ascending:boolean]</p>
+  <code ngNonBindable>
+    updatedata(sort:[string, boolean]) {
+    let sortfield = sort[0];
+    let ascending = sort[1];
+    this.server.getSortedData(sortField, ascending, (sortedItems) =&gt; this.serverItems = sortedItems );
+    }
+  </code>
+  <md-table server-side-sort="true" (sort)=updateData($event)>
+    <thead>
+    <tr>
+      <th sort=name>Name</th>
+      <th numeric sort=id>ID</th>
+      <th sort=power>Power</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *for="let item of serverItems">
+      <td>{{item.name}}</td>
+      <td>{{item.id}}</td>
+      <td>{{item.power}}</td>
+    </tr>
+    </tbody>
+  </md-table>
+
+  <h4>Selection</h4>
+  <code ngNonBindable>
+    &lt;md-table #selectableTable&gt;
+    &lt;thead&gt;
+    &lt;tr&gt;
+    &lt;th selector&gt;&lt;/th&gt;
+    &lt;th sort=name&gt;Name&lt;/th&gt;
+    &lt;th numeric sort=id&gt;ID&lt;/th&gt;
+    &lt;th sort=power&gt;Power&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+    &lt;tr *for=&quot;let item of selectableItems&quot;&gt;
+    &lt;td selector [item]=&quot;item&quot;&gt;&lt;/td&gt;
+    &lt;td&gt;{{item.name}}&lt;/td&gt;
+    &lt;td&gt;{{item.id}}&lt;/td&gt;
+    &lt;td&gt;{{item.power}}&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;/tbody&gt;
+    &lt;/md-table&gt;
+
+    &lt;h5&gt;selected:&lt;/h5&gt;
+    &lt;ul&gt;
+    &lt;li *ngFor=&quot;let character of selectableTable.getSelected()&quot;&gt;
+    {{character.name}}
+    &lt;/li&gt;
+    &lt;/ul&gt;
+  </code>
+  <div style="display:inline-block">
+    <md-table #selectableTable>
+      <thead>
+      <tr>
+        <th selector></th>
+        <th sort=name>Name</th>
+        <th numeric sort=id>ID</th>
+        <th sort=power>Power</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *for="let item of selectableItems">
+        <td selector [item]="item"></td>
+        <td>{{item.name}}</td>
+        <td>{{item.id}}</td>
+        <td>{{item.power}}</td>
+      </tr>
+      </tbody>
+    </md-table>
+  </div>
+  <div style="display:inline-block;vertical-align:top;">
+    <h5>selected:</h5>
+    <ul>
+      <li *ngFor="let character of selectableTable.getSelected()">
+        {{character.name}}
+      </li>
+    </ul>
+  </div>
+
+  <h4>Editable cells</h4>
+  <code ngNonBindable>
+    &lt;md-table&gt;
+    &lt;thead&gt;
+    &lt;tr&gt;
+    &lt;th sort=name&gt;Name&lt;/th&gt;
+    &lt;th numeric sort=id&gt;ID&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+    &lt;tr *for=&quot;let item of editableItems&quot;&gt;
+    &lt;td [(editable)]=&quot;item.name&quot;&gt;{{item.name}}&lt;/td&gt;
+    &lt;td&gt;{{item.id}}&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;/tbody&gt;
+    &lt;/md-table&gt;
+  </code>
+  <md-table>
+    <thead>
+    <tr>
+      <th sort=name>Name</th>
+      <th numeric sort=id>ID</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *for="let item of editableItems">
+      <td [(editable)]="item.name">{{item.name}}</td>
+      <td>{{item.id}}</td>
+    </tr>
+    </tbody>
+  </md-table>
+</div>

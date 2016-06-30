@@ -1,6 +1,6 @@
 import { MdDataTableProtoPage } from './app.po';
 
-describe('md-data-table-proto App', function() {
+describe('md-table-proto App', function() {
   let page: MdDataTableProtoPage;
 
   beforeEach(() => {
